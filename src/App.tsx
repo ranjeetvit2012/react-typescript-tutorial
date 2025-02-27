@@ -8,6 +8,8 @@ import {Status} from './component/Status'
 import {Person} from './component/Person'
 import {PersonList} from './component/PersonList'
 import {RandomNumber} from './component/restriction-props/RandomNumber'
+import { CustomButton } from './component/html/Button'
+import { CustomComponent } from './component/html/CustomComponent'
 
 function App() {
 
@@ -29,6 +31,8 @@ function App() {
 
 // }
 
+const [value, setValue] = useState("");
+
 const handleClick = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
   console.log('Button clicked', id);
   console.log(event)
@@ -38,9 +42,13 @@ const [inputValue, setInputValue] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log(event.target.value);
+    setValue(event.target.value);
     setInputValue(event.target.value);
   };
+  
 
+
+  
   return (
     <>
       {/* <h1>Vite + React {user?.age}</h1>
@@ -68,6 +76,15 @@ const [inputValue, setInputValue] = useState("");
     <PersonList names={[{first:'ranjeet',last:'kumar'},{first:'ramesh',last:'mahto'},{first:'ballu',last:'mahto'}]}/>
 
     <RandomNumber number={10} isPositive />
+
+    <CustomButton variant='primary' onClick={() => console.log('Clicked')}>
+        Button Label
+      </CustomButton>
+
+      <CustomComponent name="John Doe" isLoggedIn={true} />
+
+      <Input placeholder="Enter your name" value={value} handleChange={handleChange} />
+      <p>Typed Value: {value}</p>
     
     </>
   )
