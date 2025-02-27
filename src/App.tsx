@@ -10,6 +10,8 @@ import {PersonList} from './component/PersonList'
 import {RandomNumber} from './component/restriction-props/RandomNumber'
 import { CustomButton } from './component/html/Button'
 import { CustomComponent } from './component/html/CustomComponent'
+import {Private} from './component/auth/Private'
+import { Profile } from './component/auth/Profile'
 
 function App() {
 
@@ -85,6 +87,10 @@ const [inputValue, setInputValue] = useState("");
 
       <Input placeholder="Enter your name" value={value} handleChange={handleChange} />
       <p>Typed Value: {value}</p>
+
+      
+       {/* <Profile name='ranjeet' age={12} email='ranjeet@gmail.com' /> */}
+      <Private isLoggedIn={true} Component={Profile} />
     
     </>
   )
